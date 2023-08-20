@@ -38,12 +38,20 @@ const [todo,setToDo] = useState('')
             <p>{obj.text}</p>
           </div>
           <div className="right">
-            <i className="fas fa-times"></i>
+          <i id={obj.id} className="fas fa-times" onClick={(e)=>{
+              let index= todos.findIndex(obj=>{return obj.id==e.target.id})
+              if (index !== -1) {
+                todos.splice(index, 1);
+                setToDos([...todos]);
+              }
+            }}>
+           </i>
           </div>
         </div>)
        
          }) }
 
+     //to print active to dos
       {todos.map((obj)=>{
 
       if(obj.status)
